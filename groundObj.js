@@ -10,14 +10,14 @@ class GroundObj{
          
              };
          
-	this.body=Bodies.rectangle(width/2,690,1600,20,options);
+	this.body=Bodies.rectangle(x,y,w,h,options);
 	World.add(world,this.body);
     }
     display(){
-
+console.log(this.body.position.x)
         push();
         rectMode(CENTER);
-        rect(this.body.x, this.body.y, this.width, this.height);
+        rect(this.body.position.x, this.body.position.y, this.width, this.height);
         pop();
 
     }
