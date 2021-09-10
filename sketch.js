@@ -2,7 +2,7 @@ const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
-
+const Render = Matter.Render;
 var ball,groundObj,leftSide,rightSide;
 var world;
 var radius = 70;
@@ -32,7 +32,7 @@ function setup() {
 		isStatic:false,
 		restitution:0.3,
 		friction:0,
-		density:0.7
+		density:0.3
 	}
 
 	ball = Bodies.circle(260,100,radius/2,ball_options);
@@ -54,8 +54,17 @@ function setup() {
 	leftSide = new GroundObj(1100,600,20,120);
 	rightSide = new GroundObj(1350,600,20,120);
     	
+	var render = Render.create({
+		element: document.body,
+		engine: engine,
+		options: {
+		  width: 1600,
+		  height: 700,
+		  wireframes: false
+		}
+	  });
 
-  
+	  Render.run(render);
 }
 
 
@@ -90,5 +99,5 @@ function draw() {
 function hForce()
 {
     console.log("this is hforce ");
-	Matter.Body.applyForce(ball,{x:0,y:0},{x:95,y:150});
+	Matter.Body.applyForce(ball,{x:0,y:0},{x:60,y:60});
 }
